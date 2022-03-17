@@ -4,6 +4,8 @@ import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 import "./App.css";
 
+import mapStyles from "./mapStyles";
+
 const Marker = ({ children }) => children;
 
 export default function Map({
@@ -40,6 +42,11 @@ export default function Map({
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_KET }}
         center={coordinates}
         defaultZoom={10}
+        options={{
+          disableDefaultUI: true,
+          zoomControl: true,
+          styles: mapStyles,
+        }}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map }) => {
           mapRef.current = map;
